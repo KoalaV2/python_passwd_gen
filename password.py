@@ -3,18 +3,21 @@ import argparse
 import string 
 from random import * 
 
-#passwd_length = int(input("How many characters do you want the password to be? \n :"))
-#char = string.ascii_letters + string.punctuation  + string.digits
-#passwd= "".join(choice(char) for x in range(randint(passwd_length,passwd_length)))
-#print(passwd)
-
-
 parser = argparse.ArgumentParser(description='Generates password depending on arguments')
-parser.add_argument('--length', metavar='length', type=int,help='How long you want the password to be')
+parser.add_argument('-len','--length', metavar='length', type=int,help='How long you want the password to be')
+parser.add_argument('-n','--numbers',  action='store_true', help="If you want numbers or not in the generated password")
+parser.add_argument('-l','--letters', action='store_true', help="If you want letters or not in the generated password")
+parser.add_argument('-c','--characters', action='store_true', help="If you want to add special characters like @ to the password")
 
 args = parser.parse_args()
-print(args.length)
+char = ""
+if args.numbers:
+    char += string.digits 
+if args.letters:
+    char += string.ascii_letters
+if args.characters:
+    char += string.punctuation
 
-char = string.ascii_letters
 passwd = "".join(choice(char) for x  in range(randint(args.length,args.length)))
+
 print(passwd)
