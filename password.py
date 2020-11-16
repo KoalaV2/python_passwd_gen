@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import string 
-from random import * 
+from random import  choice, randint
 
 parser = argparse.ArgumentParser(description='Generates password depending on arguments')
 parser.add_argument('-len','--length', metavar='length', type=int,help='How long you want the password to be')
@@ -18,6 +18,6 @@ if args.letters:
 if args.characters:
     char += string.punctuation
 
-passwd = "".join(choice(char) for x  in range(randint(args.length,args.length)))
+passwd = "".join(choice(char) for _  in range(randint(args.length,args.length)))
 
 print(passwd)
