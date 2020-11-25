@@ -19,5 +19,4 @@ if args.characters:
     char += string.punctuation
 
 passwd = "".join(choice(char) for _  in range(randint(args.length,args.length)))
-#this is for testing ignore this
 print(passwd)
